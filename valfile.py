@@ -1,21 +1,6 @@
 import os 
 from PIL import Image
-parent_dir = '/home/ncai/Dataset/FullIJCNN2013'
-val_folder_path = os.path.join(parent_dir,'val')
-def list_to_file(train_list):
-    """
-    """
-    with open('val.txt','w') as f:
-        for paths in  train_list:
-            f.write(paths)
-            f.write('\n')
-
-def save_to_jpeg(img,path):
-    """    
-    """
-    if isinstance(img,Image.Image):
-        if isinstance(path,str):
-            img.save(path,format='jpeg')
+from .utils import *
 
 if __name__ == '__main__':
     file_name_list = []
@@ -29,9 +14,7 @@ if __name__ == '__main__':
             f_name = f_name +'.ppm'
             file_name_list.append(f_name)
     
-    files_list = os.listdir(parent_dir)
-    
-    index = 0
+    files_list = os.listdir(parent_dir)    
     for file in files_list:
         if file.endswith('.ppm'):
             flag = True
